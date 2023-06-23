@@ -27,9 +27,15 @@ nav {
     transition: all 0.5s ease;
     margin: 10px 0 10px 10px;
 }
-.logo img {
+.logoIMG {
     width: 45px;
     height: 45px;
+}
+.logoTitleIMG {
+    width: 120px;
+    height: 45px;
+    padding-left: 15px;
+    margin-left: 10px;
 }
 .logo span {
     font-weight: bold;
@@ -52,14 +58,19 @@ nav {
     height: 30px;
 }
 .navItem:hover {
-    background: #eee;
+    background: #919191;
 }
 .navItem span {
-    padding-left: 30px;
+    padding-left: 55px;
     font-size: 18px;
     position: relative;
     top: 12px;
     margin-left: 10px;
+
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 a {
