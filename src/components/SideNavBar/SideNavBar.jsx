@@ -5,29 +5,25 @@ import homeLogo from '../../assets/home.png';
 import styles from './SideNavBar.module.css';
 function SideNavBar(props) {
     return (
-        <nav className={styles.nav}>
+        <nav>
             <ul>
                 <li>
-                    <a>
-                        <div className={styles.logo}>
-                            <div>
-                                <img src={logoSVG} />
-                            </div>
-                            <div>
-                                <img
-                                    src={logoTitle}
-                                    className={`${styles.logoTitle} ${styles.navItem}`}
-                                />
-                            </div>
-                        </div>
+                    <a href="#" className={styles.logo}>
+                        <img src={logoSVG}></img>
+                        <span className={styles.navItem}>SHIKIMORI</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <div>
-                            <img className={styles.fas} src={homeLogo}></img>
-                            <span className={styles.navItem}>Home</span>
-                        </div>
+                    <a href="#" className={styles.logo}>
+                        <img className={styles.fas} src={homeLogo}></img>
+                        <span className={styles.navItem}>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" className={styles.logIn}>
+                        {' '}
+                        <img className={styles.fas} src={homeLogo}></img>
+                        <span className={styles.navItem}>Log in</span>
                     </a>
                 </li>
             </ul>
