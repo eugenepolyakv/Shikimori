@@ -10,20 +10,19 @@ function SideNavBar(props) {
                 <li>
                     <a href="#" className={styles.logo}>
                         <img src={logoSVG}></img>
-                        <span className={styles.navItem}>SHIKIMORI</span>
+                        <span>SHIKIMORI</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" className={styles.logo}>
-                        <img className={styles.fas} src={homeLogo}></img>
-                        <span className={styles.navItem}>Home</span>
+                    <a href="#" className={styles.navItem}>
+                        <img src={homeLogo}></img>
+                        <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" className={styles.logIn}>
-                        {' '}
-                        <img className={styles.fas} src={homeLogo}></img>
-                        <span className={styles.navItem}>Log in</span>
+                    <a href="#" className={`${styles.navItem} ${styles.guest}`}>
+                        <img src={homeLogo}></img>
+                        <span>Sign up</span>
                     </a>
                 </li>
             </ul>

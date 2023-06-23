@@ -25,7 +25,7 @@ nav {
     text-align: center;
     display: flex;
     transition: all 0.5s ease;
-    margin: 10px 0 0 10px;
+    margin: 10px 0 10px 10px;
 }
 .logo img {
     width: 45px;
@@ -36,7 +36,32 @@ nav {
     padding-left: 15px;
     font-size: 18px;
     text-transform: uppercase;
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
 }
+
+.navItem {
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    padding: 15px 0 15px 25px;
+}
+.navItem img {
+    width: 30px;
+    height: 30px;
+}
+.navItem:hover {
+    background: #eee;
+}
+.navItem span {
+    padding-left: 30px;
+    font-size: 18px;
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+
 a {
     position: relative;
     color: white;
@@ -45,27 +70,12 @@ a {
     width: 300px;
     padding: 10px;
 }
-.fas {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    top: 14px;
-    font-size: 20px;
-    text-align: center;
-}
-.navItem {
-    position: relative;
-    top: 12px;
-    margin-left: 10px;
-}
-a:hover {
-    background: #eee;
-}
+
 nav:hover {
     width: 280px;
     transition: all 0.5s ease;
 }
-.logIn {
+.guest {
     position: absolute;
     bottom: 0;
 }
