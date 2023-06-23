@@ -1,0 +1,80 @@
+/* .block {
+    height: 50px;
+    width: 50px;
+} */
+
+.nav {
+    background-color: #343434;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.8);
+}
+
+.logo {
+    text-align: center;
+    transition: all 0.5s ease;
+    display: flex;
+    margin: 10px 0 0 10px;
+}
+
+.logoTitle {
+    padding-left: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    display: block;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    position: relative;
+    color: white;
+    font-size: 14px;
+    display: table;
+    width: 30px;
+    padding: 10px;
+}
+
+.fas {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0 0 10px;
+    font-size: 20px;
+    text-align: center;
+}
+.navItem {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+a:hover {
+    background: #eee;
+}
+nav:hover {
+    width: 280px;
+    transition: all 0.5s ease;
+}
+
+.auth {
+    position: absolute;
+    bottom: 0;
+}
