@@ -1,0 +1,59 @@
+{
+  "meals": [
+    {
+      "id": "52768",
+      "strMeal": "Apple Frangipan Tart",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg"
+    },
+    {
+      "id": "52893",
+      "strMeal": "Apple & Blackberry Crumble",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg"
+    },
+    {
+      "id": "53049",
+      "strMeal": "Apam balik",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
+    },
+    {
+      "id": "53050",
+      "strMeal": "Ayam Percik",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg"
+    },
+    {
+      "id": "1",
+      "strMeal": "we",
+      "strMealThumb": "awd"
+    },
+    {
+      "id": "2",
+      "strMeal": "aw",
+      "strMealThumb": "awd"
+    },
+    {
+      "id": "5",
+      "strMeal": "abuba",
+      "strMealThumb": ""
+    },
+    {
+      "id": "21",
+      "strMeal": "awd",
+      "strMealThumb": "wad"
+    },
+    {
+      "id": "52",
+      "strMeal": "wda",
+      "strMealThumb": "awd"
+    },
+    {
+      "id": "31",
+      "strMeal": "dwa",
+      "strMealThumb": "daw"
+    },
+    {
+      "id": "123",
+      "strMeal": "dwad",
+      "strMealThumb": "awds"
+    }
+  ]
+}

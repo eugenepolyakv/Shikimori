@@ -5,15 +5,36 @@ import { useActions } from '../../customHooks/useActions';
 import { useFavorites } from '../../customHooks/useFavorites';
 import { userSlice } from '../../store/user/user.slice';
 import User from '../user/User';
+import { useGetRecipesQuery } from '../../store/api/api';
+import AddForm from './addForm/addForm';
 const HomePage = () => {
-    console.log(userSlice);
+    // console.log(userSlice);
     const recipes = useFavorites();
-    const { toggleFavorite } = useActions();
+    const { toggleFavorite, getRecipes } = useActions();
+    const { isLoading, data, refetch } = useGetRecipesQuery();
+    console.log(recipes);
     return (
         <div>
-            <User />
+            {/* <User /> */}
             Content
-            <RecipeItem
+            <button onClick={() => refetch()}>CLICK ON ME TO REFETCH</button>
+            <AddForm />
+            {/* <button onClick={() => getRecipes()}>CLICK</button> */}
+            {isLoading ? (
+                <div>Loading...</div>
+            ) : data ? (
+                data.map((el) => (
+                    <RecipeItem
+                        key={el.id}
+                        recipe={el}
+                        recipes={recipes}
+                        toggleFavorite={toggleFavorite}
+                    />
+                ))
+            ) : (
+                <div>There is no recipes in data base</div>
+            )}
+            {/* <RecipeItem
                 recipe={{ id: 1, name: 'Лазанья' }}
                 recipes={recipes}
                 toggleFavorite={toggleFavorite}
@@ -22,7 +43,7 @@ const HomePage = () => {
                 recipe={{ id: 2, name: 'Паста' }}
                 recipes={recipes}
                 toggleFavorite={toggleFavorite}
-            />
+            /> */}
         </div>
     );
 };

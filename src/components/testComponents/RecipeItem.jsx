@@ -5,12 +5,12 @@ import { actions } from '../../store/favorites/favorite.slice.';
 const RecipeItem = ({ recipe, recipes, toggleFavorite }) => {
     // const state = useSelector((state) => state.test);
     // const { toggleFavorite } = useActions();
-    console.log(recipes);
+    // console.log(recipes);
     return (
         <div>
-            <h2>{recipe.name}</h2>
+            <h2>{recipe.strMeal}</h2>
             <button onClick={() => toggleFavorite(recipe)}>
-                {recipes.some((el) => el.id === recipe.id)
+                {recipes.some((el) => el.idMeal === recipe.idMeal)
                     ? 'Remove from favorities'
                     : 'Add to favorities'}
             </button>
