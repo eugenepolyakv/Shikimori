@@ -9,10 +9,11 @@ function App() {
 
     return (
         <>
-            <SideNavBar />
+            {/* <SideNavBar /> */}
             <MainContent>
                 <HomePage></HomePage>
             </MainContent>
+            <SideNavBar />
         </>
     );
 }

@@ -1,7 +1,12 @@
 import React from 'react';
+import Anime from '../AnimeItems/Anime/AnimeItem';
 
 const HomePage = () => {
-    return <div>Content</div>;
+    return (
+        <div>
+            <Anime />
+        </div>
+    );
 };
 
 export default HomePage;

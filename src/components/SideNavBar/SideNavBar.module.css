@@ -20,11 +20,17 @@ nav {
     transition: width 0.2s linear;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.8);
 }
-
+nav:hover {
+    width: 280px;
+    transition: all 0.5s ease;
+}
+/* nav:hover {
+    background: white;
+} */
 .logo {
     text-align: center;
     display: flex;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
     margin: 10px 0 10px 10px;
 }
 .logoIMG {
@@ -50,7 +56,7 @@ nav {
 .navItem {
     text-align: center;
     display: flex;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
     padding: 15px 0 15px 25px;
 }
 .navItem img {
@@ -82,10 +88,6 @@ a {
     padding: 10px;
 }
 
-nav:hover {
-    width: 280px;
-    transition: all 0.5s ease;
-}
 .guest {
     position: absolute;
     bottom: 0;
