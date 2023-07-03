@@ -23,13 +23,13 @@ function SideNavBar(props) {
                 <li>
                     <a href="#" className={styles.navItem}>
                         <img src={homeLogo}></img>
-                        <span>Главная</span>
+                        <span>Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" className={styles.navItem}>
                         <img src={community}></img>
-                        <span>Клубы</span>
+                        <span>Clubs</span>
                     </a>
                 </li>
                 <li>
@@ -44,7 +44,7 @@ function SideNavBar(props) {
                 <li>
                     <a href="#" className={`${styles.navItem} ${styles.guest}`}>
                         <img src={guest}></img>
-                        <span>Гость</span>
+                        <span>Guest</span>
                     </a>
                 </li>
             </ul>

@@ -1,5 +1,6 @@
 body {
-    background-image: url('./assets/square_bg.png');
+    /* background-image: url('./assets/square_bg.png'); */
+    background: #ddd;
 }
 
 /* #root {
