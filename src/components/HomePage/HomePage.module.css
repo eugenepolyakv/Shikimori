@@ -1,0 +1,15 @@
+.mainTitle {
+    font-weight: bold;
+    font-family: 'Trocchi';
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.parentContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin: 0 auto 0 5%;
+}

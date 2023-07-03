@@ -9,7 +9,6 @@ function App() {
 
     return (
         <>
-            {/* <SideNavBar /> */}
             <MainContent>
                 <HomePage></HomePage>
             </MainContent>

@@ -1,13 +1,14 @@
 .container {
     width: 200px;
-    height: 266px;
+    /* height: 266px; */
+    height: 300px;
     /* position: absolute; */
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     /* margin: auto; */
-    background: url('https://cdn.myanimelist.net/images/anime/4/19644l.jpg');
+    /* background: url('https://cdn.myanimelist.net/images/anime/4/19644l.jpg'); */
     background-color: black;
     background-size: cover;
     cursor: pointer;
@@ -40,7 +41,7 @@
     transform: translateY(40px);
     transition: all 0.7s;
 }
-.head hr {
+/* .head hr {
     display: block;
     width: 0;
     border: none;
@@ -49,7 +50,7 @@
     bottom: 0;
     left: 20px;
     transition: all 0.5s;
-}
+} */
 
 .price {
     /* font-size: 22px; */
