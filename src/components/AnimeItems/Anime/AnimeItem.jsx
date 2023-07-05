@@ -5,21 +5,21 @@ const AnimeItem = ({
     title_english,
     episodes,
     images,
-    isLoading,
+    isFetching,
 }) => {
     const title = title_english || japaneseTitle;
     return (
         <div
-            className={isLoading ? c.animatedLoading : c.container}
+            className={isFetching ? c.animatedLoading : c.container}
             style={
-                isLoading
+                isFetching
                     ? null
                     : {
                           backgroundImage: `url(${images.jpg.large_image_url})`,
                       }
             }
         >
-            {isLoading ? null : (
+            {isFetching ? null : (
                 <div className={c.overlay}>
                     <div className={c.items}></div>
                     <div className={`${c.items} ${c.head}`}>

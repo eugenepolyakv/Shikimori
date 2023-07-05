@@ -15,7 +15,9 @@ export const rootApi = createApi({
         },
     }),
     endpoints: (builder) => ({
-        getListOfAnime: builder.query({ query: () => 'anime' }),
+        getListOfAnime: builder.query({
+            query: (page = 1) => `anime?page=${page}`,
+        }),
     }),
 });
 
