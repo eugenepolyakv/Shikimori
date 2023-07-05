@@ -4,9 +4,26 @@
     justify-content: center;
 }
 
+.displayFlex {
+    display: flex;
+}
+
 .active {
-    background: lighten(#202020, 3%);
+    background: lighten(#202020, 15%);
     position: relative;
+    --size: 32px;
+    --margin: 6px;
+    margin: 0 var(--margin);
+    border-radius: 6px;
+    max-width: auto;
+    min-width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 6px;
+    color: white;
 }
 
 .arrowMargin {
@@ -15,9 +32,9 @@
 
 .arrowText {
     display: block;
-    vertical-align: middle;
+    // vertical-align: middle;
     font-size: 13px;
-    vertical-align: middle;
+    // vertical-align: middle;
 }
 
 .number {
@@ -37,10 +54,10 @@
     color: white;
     @media (hover: hover) {
         &:hover {
-            background: lighten(#202020, 6%);
+            background: lighten(#202020, 9%);
         }
     }
     &:active {
-        background: lighten(#202020, 9%);
+        background: lighten(#202020, 12%);
     }
 }
