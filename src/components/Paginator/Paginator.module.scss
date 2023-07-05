@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    padding-bottom: 40px;
+    justify-content: center;
+}
+
+.active {
+    background: lighten(#202020, 3%);
+    position: relative;
+}
+
+.arrowMargin {
+    margin-right: 3px;
+}
+
+.arrowText {
+    display: block;
+    vertical-align: middle;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.number {
+    --size: 32px;
+    --margin: 6px;
+    margin: 0 var(--margin);
+    border-radius: 6px;
+    background: #202020;
+    max-width: auto;
+    min-width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 6px;
+    color: white;
+    @media (hover: hover) {
+        &:hover {
+            background: lighten(#202020, 6%);
+        }
+    }
+    &:active {
+        background: lighten(#202020, 9%);
+    }
+}

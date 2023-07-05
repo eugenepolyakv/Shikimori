@@ -2,6 +2,7 @@ import React from 'react';
 import AnimeItem from '../AnimeItems/Anime/AnimeItem';
 import { useGetListOfAnimeQuery } from '../../redux/api/rootApi';
 import s from './HomePage.module.css';
+import Paginator from '../Paginator/Paginator';
 const HomePage = () => {
     const { data, isLoading } = useGetListOfAnimeQuery();
     // console.log(data ? data.data : 'loading');
@@ -24,6 +25,7 @@ const HomePage = () => {
                 </div>
             )}
             {/* <Anime /> */}
+            <Paginator />
         </div>
     );
 };

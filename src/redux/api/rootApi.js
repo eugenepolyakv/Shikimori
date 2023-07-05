@@ -10,7 +10,7 @@ export const rootApi = createApi({
         // prepareHeaders: (headers) =>
         //     headers.set('Access-Control-Allow-Origin', '*'),
         prepareHeaders: (headers, { getState }) => {
-            headers.set('Origin', 'http://127.0.0.1:5173/');
+            // headers.set('Origin', 'http://127.0.0.1:5173/');
             return headers;
         },
     }),
