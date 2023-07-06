@@ -6,6 +6,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 const Rating = ({ rating = 0 }) => {
     const totalStars = 5;
     const activeStars = Math.round(rating) / 2;
+    const styleForStar = { width: '60px', height: '60px' };
     return (
         <Box
             sx={{
@@ -26,17 +27,17 @@ const Rating = ({ rating = 0 }) => {
                                     position: 'absolute',
                                 }}
                             >
-                                <StarIcon />
+                                <StarIcon style={styleForStar} />
                             </Box>
                             <Box>
-                                <StarBorderIcon />
+                                <StarBorderIcon style={styleForStar} />
                             </Box>
                         </Box>
                     ) : (
-                        <StarIcon />
+                        <StarIcon style={styleForStar} />
                     )
                 ) : (
-                    <StarBorderIcon />
+                    <StarBorderIcon style={styleForStar} />
                 );
             })}
         </Box>
