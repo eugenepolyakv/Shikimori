@@ -7,24 +7,45 @@ const AnimePage = () => {
             <div className={styles.mainTitle}>Naruto</div>
             <div className={styles.parent}>
                 <div className={styles.div1}>
-                    <img src="https://cdn.myanimelist.net/images/anime/13/17405l.jpg" />
+                    <div>
+                        <img src="https://cdn.myanimelist.net/images/anime/13/17405l.jpg" />
+                    </div>
+
+                    <div className={styles.infoBlock}>
+                        <div className={styles.title}>Information</div>
+                        <ul className={styles.ul}>
+                            <li>
+                                <span>Type:</span> TV
+                            </li>
+                            <li>
+                                <span>Episodes:</span> 220
+                            </li>
+                            <li>
+                                <span>Episode duration:</span> 23 min
+                            </li>
+                            <li>
+                                <span>Status:</span> published in 2002-2007
+                            </li>
+                            <li>
+                                <span>Genres:</span> Action Adventure Fantasy
+                            </li>
+                            <li>
+                                <span>Rating:</span> PG-13 - Teens 13 or older
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div className={styles.div2}>
-                    Information
-                    <ul>
-                        <li>Type: TV</li>
-                        <li>Episodes: 220</li>
-                        <li>Episode duration: 23 min</li>
-                        <li>Status: published in 2002-2007</li>
-                        <li>Genres: Action Adventure Fantasy</li>
-                        <li>Rating: PG-13 - Teens 13 or older</li>
-                    </ul>
+                    <div className={styles.title}>Rating</div>
+                    <Rating rating={7.98} />{' '}
+                    <div>
+                        7.98<div>Good</div>
+                    </div>
                 </div>
                 <div className={styles.div3}>
-                    Rating
-                    <Rating rating={9.49} />
+                    <div className={styles.title}>STUDIO</div>
+                    <img src="https://cdn.myanimelist.net/images/company/4.png" />
                 </div>
-                <div className={styles.div4}>STUDIO</div>
             </div>
         </div>
     );
