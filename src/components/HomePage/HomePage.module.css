@@ -1,16 +1,27 @@
 .mainTitle {
-    font-weight: bold;
+    /* font-weight: bold;
     font-family: 'Trocchi';
     font-size: 30px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+
+    text-align: center;
+    margin: 0.5em 0 0.5em 0;
+    color: #343434;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
 }
+
 .parentContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 40px;
     margin: 0 auto 0 5%;
     padding-bottom: 40px;
 }

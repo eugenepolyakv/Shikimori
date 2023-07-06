@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import AnimeItem from '../AnimeItems/Anime/AnimeItem';
+import AnimeItem from '../AnimeItems/AnimeItemsInGrid/AnimeItem';
 import { useGetListOfAnimeQuery } from '../../redux/api/rootApi';
 import s from './HomePage.module.css';
 import Paginator from '../Paginator/Paginator';
-import AnimeGridOfLoadingCards from '../AnimeItems/Anime/AnimeGridOfLoadingCards';
+import AnimeGridOfLoadingCards from '../AnimeItems/AnimeItemsInGrid/AnimeGridOfLoadingCards';
 const HomePage = () => {
     const [currentPage, changeCurrentPage] = useState(1);
     const { data, isFetching } = useGetListOfAnimeQuery(currentPage);

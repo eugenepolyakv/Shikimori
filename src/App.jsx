@@ -4,17 +4,18 @@ import SideNavBar from './components/SideNavBar/SideNavBar';
 import HomePage from './components/HomePage/HomePage';
 import MainContent from './components/HOCs/MainContent';
 import { Routes, Route, Navigate } from 'react-router-dom';
-// import TestCard from './components/testCard';
+import AnimePage from './components/AnimeItems/AnimePage/AnimePage';
+
 function App() {
     const [count, setCount] = useState(0);
 
     return (
         <>
             <MainContent>
-                {/* <TestCard /> */}
-                <Routes>
+                {/* <Routes>
                     <Route path="/" element={<HomePage />}></Route>
-                </Routes>
+                </Routes> */}
+                <AnimePage />
             </MainContent>
             <SideNavBar />
         </>
