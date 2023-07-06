@@ -1,6 +1,6 @@
 body {
-    background: #ddd;
-    /* background: white; */
+    /* background: #ddd; */
+    background-image: url('./assets/square_bg.png');
 }
 
 /* #root {
