@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './AnimePage.module.css';
+import Rating from '../../Other/StarRateComponent/Rating';
 const AnimePage = () => {
     return (
         <div>
@@ -19,7 +20,10 @@ const AnimePage = () => {
                         <li>Rating: PG-13 - Teens 13 or older</li>
                     </ul>
                 </div>
-                <div className={styles.div3}>RATING</div>
+                <div className={styles.div3}>
+                    Rating
+                    <Rating rating={9.49} />
+                </div>
                 <div className={styles.div4}>STUDIO</div>
             </div>
         </div>
