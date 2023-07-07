@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../AnimePage.module.css';
-import closingCross from '../../../../assets/closingCross.svg';
+// import closingCross from '../../../../assets/closingCross.svg';
+import smallPlayButton from '../../../../assets/smallPlayButton2.png';
 import playButton from '../../../../assets/playButton.png';
 const AnimeTrailer = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -17,6 +18,14 @@ const AnimeTrailer = () => {
                 >
                     <div className={styles.overlay1}>
                         <img src={playButton} />
+                    </div>
+                    <div className={styles.smallPlayButton}>
+                        <img
+                            // style={{ verticalAlign: 'middle' }}
+                            style={{ verticalAlign: 'middle', height: '15px' }}
+                            src={smallPlayButton}
+                        />{' '}
+                        Watch trailer
                     </div>
                 </div>
                 {openModal ? (

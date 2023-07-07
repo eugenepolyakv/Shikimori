@@ -127,6 +127,7 @@
     background-size: cover;
     cursor: pointer;
     margin-bottom: 30px;
+    position: relative;
 }
 
 .overlay1 {
@@ -144,4 +145,28 @@
 .smallVideoContainer:hover .overlay1 {
     opacity: 1;
     border-radius: 5px;
+}
+.smallVideoContainer:hover .smallPlayButton {
+    opacity: 0;
+    transition: all 0.5s;
+}
+.smallPlayButton {
+    overflow: hidden;
+    border-radius: 2px;
+    bottom: 4px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+    font-weight: 600;
+
+    line-height: 20px;
+
+    height: 35px;
+    padding: 8px 8px;
+    pointer-events: none;
+    position: absolute;
+    bottom: 10%;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    align-items: center;
 }
