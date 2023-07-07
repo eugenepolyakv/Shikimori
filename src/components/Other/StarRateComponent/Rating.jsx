@@ -28,17 +28,20 @@ const Rating = ({ rating = 0 }) => {
                                     position: 'absolute',
                                 }}
                             >
-                                <StarIcon style={styleForStar} />
+                                <StarIcon key={index} style={styleForStar} />
                             </Box>
                             <Box>
-                                <StarBorderIcon style={styleForStar} />
+                                <StarBorderIcon
+                                    key={index}
+                                    style={styleForStar}
+                                />
                             </Box>
                         </Box>
                     ) : (
-                        <StarIcon style={styleForStar} />
+                        <StarIcon key={index} style={styleForStar} />
                     )
                 ) : (
-                    <StarBorderIcon style={styleForStar} />
+                    <StarBorderIcon key={index} style={styleForStar} />
                 );
             })}
         </Box>

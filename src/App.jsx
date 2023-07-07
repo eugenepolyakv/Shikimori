@@ -7,15 +7,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AnimePage from './components/AnimeItems/AnimePage/AnimePage';
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
         <>
             <MainContent>
-                {/* <Routes>
-                    <Route path="/" element={<HomePage />}></Route>
-                </Routes> */}
-                <AnimePage />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/anime/:animeID" element={<AnimePage />} />
+                </Routes>
             </MainContent>
             <SideNavBar />
         </>

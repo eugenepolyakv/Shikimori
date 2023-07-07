@@ -6,25 +6,30 @@ import community from '../../assets/community.png';
 import styles from './SideNavBar.module.css';
 import guest from '../../assets/guest.png';
 import gitHub from '../../assets/gitHub.png';
+import { NavLink } from 'react-router-dom';
 function SideNavBar(props) {
     return (
         <nav>
             <ul>
                 <li>
-                    <a href="#" className={styles.logo}>
+                    <NavLink to="/" className={styles.logo}>
+                        {/* <a href="#" className={styles.logo}> */}
                         <img className={styles.logoIMG} src={logoSVG}></img>
 
                         <img
                             className={styles.logoTitleIMG}
                             src={logoTitle}
                         ></img>
-                    </a>
+                        {/* </a> */}
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="#" className={styles.navItem}>
+                    <NavLink to="/" className={styles.navItem}>
+                        {/* <a href="#" className={styles.navItem}> */}
                         <img src={homeLogo}></img>
                         <span>Home</span>
-                    </a>
+                        {/* </a> */}
+                    </NavLink>
                 </li>
                 <li>
                     <a href="#" className={styles.navItem}>

@@ -1,11 +1,13 @@
 import React from 'react';
 import c from './AnimeItem.module.scss';
+import { NavLink } from 'react-router-dom';
 const AnimeItem = ({
     title: japaneseTitle,
     title_english,
     episodes,
     images,
     isFetching,
+    mal_id,
 }) => {
     const title = title_english || japaneseTitle;
     return (
@@ -20,7 +22,8 @@ const AnimeItem = ({
             }
         >
             {isFetching ? null : (
-                <div className={c.overlay}>
+                <NavLink className={c.overlay} to={`anime/${mal_id}`}>
+                    {/* <div className={c.overlay}> */}
                     <div className={c.items}></div>
                     <div className={`${c.items} ${c.head}`}>
                         {/* <p>Cowboy Bebop</p> */}
@@ -38,7 +41,8 @@ const AnimeItem = ({
                         {/* <i className={`${c.fa}`}></i> */}
                         <span>CLICK FOR MORE INFO</span>
                     </div>
-                </div>
+                    {/* </div> */}
+                </NavLink>
             )}
         </div>
     );

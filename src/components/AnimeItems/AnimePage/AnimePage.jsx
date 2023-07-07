@@ -6,7 +6,11 @@ import AnimeStudio from './AnimeComponents/AnimeStudio';
 import AnimeDescription from './AnimeComponents/AnimeDescription';
 import AnimeMainCharacters from './AnimeComponents/AnimeMainCharacters';
 import AnimeTrailer from './AnimeComponents/AnimeTrailer';
+import { useParams } from 'react-router-dom';
+
 const AnimePage = () => {
+    const params = useParams();
+    console.log(params);
     return (
         <div>
             <div className={styles.mainTitle}>Naruto</div>
