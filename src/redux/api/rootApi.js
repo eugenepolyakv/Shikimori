@@ -6,11 +6,7 @@ export const rootApi = createApi({
     reducerPath: 'rootAPI',
     baseQuery: fetchBaseQuery({
         baseUrl: API_URL,
-        // credentials: 'same-origin',
-        // prepareHeaders: (headers) =>
-        //     headers.set('Access-Control-Allow-Origin', '*'),
         prepareHeaders: (headers, { getState }) => {
-            // headers.set('Origin', 'http://127.0.0.1:5173/');
             return headers;
         },
     }),
@@ -18,7 +14,17 @@ export const rootApi = createApi({
         getListOfAnime: builder.query({
             query: (page = 1) => `anime?page=${page}`,
         }),
+        getAnimeById: builder.query({ query: (id) => `anime/${id}` }),
+        getProducersById: builder.query({ query: (id) => `producers/${id}` }),
+        getCharactersByAnimeId: builder.query({
+            query: (id) => `anime/${id}/characters`,
+        }),
     }),
 });
 
-export const { useGetListOfAnimeQuery } = rootApi;
+export const {
+    useGetListOfAnimeQuery,
+    useGetAnimeByIdQuery,
+    useGetProducersByIdQuery,
+    useGetCharactersByAnimeIdQuery,
+} = rootApi;

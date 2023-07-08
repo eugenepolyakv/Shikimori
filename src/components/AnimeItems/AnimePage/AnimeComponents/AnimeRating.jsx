@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from '../AnimePage.module.css';
 import Rating from '../../../Other/StarRateComponent/Rating';
-const AnimeRating = () => {
+const AnimeRating = ({ score }) => {
     return (
         <div>
             <div className={styles.title}>Rating</div>
             <div className={styles.starRating} style={{ display: 'flex' }}>
-                <Rating rating={7.98} />{' '}
+                <Rating rating={score} />{' '}
                 <div className={styles.grade}>
-                    7.98<div>Good</div>
+                    {score}
+                    <div>Good</div>
                 </div>
             </div>
         </div>

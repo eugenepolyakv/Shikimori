@@ -1,27 +1,32 @@
 import React from 'react';
 import styles from '../AnimePage.module.css';
-const AnimeInfo = () => {
+const AnimeInfo = ({ info }) => {
     return (
         <div className={styles.infoBlock}>
             <div className={styles.title}>Information</div>
             <ul className={styles.ul}>
                 <li>
-                    <span>Type:</span> TV
+                    <span>Type: </span>
+                    {info.type}
                 </li>
                 <li>
-                    <span>Episodes:</span> 220
+                    <span>Episodes: </span>
+                    {info.episodes}
                 </li>
                 <li>
-                    <span>Episode duration:</span> 23 min
+                    <span>Episode duration: </span>
+                    {info.duration}
                 </li>
                 <li>
-                    <span>Status:</span> published in 2002-2007
+                    <span>Status: </span> {info.status + ' in '}{' '}
+                    {info.aired.prop.from.year + '-' + info.aired.prop.to.year}
                 </li>
                 <li>
-                    <span>Genres:</span> Action Adventure Fantasy
+                    <span>Genres: </span>{' '}
+                    {info.genres.map((el) => el.name + ' ')}
                 </li>
                 <li>
-                    <span>Rating:</span> PG-13 - Teens 13 or older
+                    <span>Rating: </span> {info.rating}
                 </li>
             </ul>
         </div>

@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from '../AnimePage.module.css';
-const AnimeDescription = () => {
+const AnimeDescription = ({ synopsis }) => {
     return (
         <div className={styles.div4}>
             <div className={styles.title}>Description</div>
             <div style={{ textAlign: 'justify' }}>
-                {`Moments prior to Naruto Uzumaki's birth, a huge demon known
+                {synopsis}
+                {/* {`Moments prior to Naruto Uzumaki's birth, a huge demon known
                     as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure,
                     the Hidden Leaf Village, and wreaked havoc. In order to put
                     an end to the Kyuubi's rampage, the leader of the village,
@@ -16,7 +17,7 @@ const AnimeDescription = () => {
                     Naruto struggles to find his place in the village, while his
                     burning desire to become the Hokage of Konohagakure leads
                     him not only to some great new friends, but also some deadly
-                    foes.\n\n[Written by MAL Rewrite]`}
+                    foes.\n\n[Written by MAL Rewrite]`} */}
             </div>
         </div>
     );

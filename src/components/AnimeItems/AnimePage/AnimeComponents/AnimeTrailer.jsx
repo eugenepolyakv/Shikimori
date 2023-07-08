@@ -3,17 +3,18 @@ import styles from '../AnimePage.module.css';
 // import closingCross from '../../../../assets/closingCross.svg';
 import smallPlayButton from '../../../../assets/smallPlayButton2.png';
 import playButton from '../../../../assets/playButton.png';
-const AnimeTrailer = () => {
+const AnimeTrailer = ({ trailer }) => {
     const [openModal, setOpenModal] = useState(false);
     return (
         <div>
-            <div style={{ display: 'inline-block' }}>
+            <div style={{ display: 'inline-block', marginTop: '30px' }}>
                 <div className={styles.title}>TRAILER</div>
                 <div
                     onClick={() => setOpenModal(true)}
                     className={styles.smallVideoContainer}
                     style={{
-                        backgroundImage: `url(https://img.youtube.com/vi/bJVyIXeUznY/sddefault.jpg)`,
+                        // backgroundImage: `url(https://img.youtube.com/vi/bJVyIXeUznY/sddefault.jpg)`,
+                        backgroundImage: `url(${trailer.images.small_image_url})`,
                     }}
                 >
                     <div className={styles.overlay1}>
@@ -51,7 +52,8 @@ const AnimeTrailer = () => {
                                 className={styles.video}
                                 width="80%"
                                 height="600px"
-                                src="https://www.youtube.com/embed/bJVyIXeUznY?enablejsapi=1&wmode=opaque&autoplay=1"
+                                // src="https://www.youtube.com/embed/bJVyIXeUznY?enablejsapi=1&wmode=opaque&autoplay=1"
+                                src={trailer.embed_url}
                             ></iframe>
                         </div>
                     </div>

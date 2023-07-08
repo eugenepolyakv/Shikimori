@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './AnimePage.module.css';
 import AnimeInfo from './AnimeComponents/AnimeInfo';
 import AnimeRating from './AnimeComponents/AnimeRating';
@@ -7,31 +7,82 @@ import AnimeDescription from './AnimeComponents/AnimeDescription';
 import AnimeMainCharacters from './AnimeComponents/AnimeMainCharacters';
 import AnimeTrailer from './AnimeComponents/AnimeTrailer';
 import { useParams } from 'react-router-dom';
-
+import {
+    useGetAnimeByIdQuery,
+    useGetProducersByIdQuery,
+    useGetCharactersByAnimeIdQuery,
+} from '../../../redux/api/rootApi';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 const AnimePage = () => {
     const params = useParams();
-    console.log(params);
-    return (
-        <div>
-            <div className={styles.mainTitle}>Naruto</div>
+    useEffect(() => window.scrollTo(0, 0), []);
+
+    const { data, isFetching } = useGetAnimeByIdQuery(params.animeID);
+    const { data: charactersData, isFetching: isCharatersFetching } =
+        useGetCharactersByAnimeIdQuery(params.animeID);
+    const { data: producer, isFetching: isProducerFetching } =
+        useGetProducersByIdQuery(
+            isFetching ? skipToken : data.data.studios[0].mal_id
+        );
+
+    const parsedData = isFetching ? null : data.data;
+    const animeTitle = data
+        ? parsedData.title_english || parsedData.title
+        : null;
+
+    return isFetching ? (
+        <div>LOADING...</div>
+    ) : (
+        <div
+            style={{
+                background: 'white',
+                margin: '0 auto',
+                width: '1300px',
+                padding: '20px 20px',
+            }}
+        >
+            <div className={styles.mainTitle}>{animeTitle}</div>
             <div className={styles.parent}>
                 <div className={styles.div1}>
                     <div>
                         <img
-                            style={{ borderRadius: '5px' }}
-                            src="https://cdn.myanimelist.net/images/anime/13/17405l.jpg"
+                            style={{
+                                borderRadius: '5px',
+                                height: '425px',
+                                width: '280px',
+                                WebkitBoxShadow: '0 0 5px #000',
+                            }}
+                            // src="https://cdn.myanimelist.net/images/anime/13/17405l.jpg"
+                            src={data.data.images.jpg.large_image_url}
                         />
                     </div>
-                    <AnimeInfo />
+                    <AnimeInfo
+                        info={{
+                            type: parsedData.type,
+                            episodes: parsedData.episodes,
+                            duration: parsedData.duration,
+                            status: parsedData.status,
+                            aired: parsedData.aired,
+                            genres: parsedData.genres,
+                            rating: parsedData.rating,
+                        }}
+                    />
                 </div>
                 <div className={styles.div2}>
-                    <AnimeRating />
-                    <AnimeStudio />
+                    <AnimeRating score={parsedData.score} />
+
+                    <AnimeStudio
+                        isLoaing={isProducerFetching}
+                        info={producer}
+                    />
                 </div>
             </div>
-            <AnimeDescription />
-            <AnimeMainCharacters />
-            <AnimeTrailer />
+            <AnimeDescription synopsis={parsedData.synopsis} />
+            <AnimeMainCharacters
+                characters={charactersData}
+                isLoading={isCharatersFetching}
+            />
+            <AnimeTrailer trailer={parsedData.trailer} />
         </div>
     );
 };
