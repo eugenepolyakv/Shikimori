@@ -14,7 +14,7 @@ const AnimeTrailer = ({ trailer }) => {
                     className={styles.smallVideoContainer}
                     style={{
                         // backgroundImage: `url(https://img.youtube.com/vi/bJVyIXeUznY/sddefault.jpg)`,
-                        backgroundImage: `url(${trailer.images.small_image_url})`,
+                        backgroundImage: `url(${trailer.images.maximum_image_url})`,
                     }}
                 >
                     <div className={styles.overlay1}>

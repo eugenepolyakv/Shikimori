@@ -89,14 +89,16 @@
 .div5 {
     margin-top: 30px;
     display: inline-block;
+    width: 100%;
 }
 
 .mainCharacters {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 10px;
+    grid-column-gap: 20px;
     grid-row-gap: 0px;
+    margin: 20px 0;
 }
 
 .overlay {
@@ -199,6 +201,27 @@
     border-radius: 5px;
     background-size: 200% 100%;
     animation: 1s shine linear infinite;
+}
+.nameOfACharacter {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    font-size: 25px;
+    /* max-height: 42.9px; */
+    line-height: 1.65;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    /* color: #176093; */
+    font-weight: 700;
+}
+.characterCard {
+    color: #176093;
+}
+.characterCard:hover {
+    color: rgb(255, 85, 0);
+    text-decoration: underline;
 }
 @keyframes shine {
     to {

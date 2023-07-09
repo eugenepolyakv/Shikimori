@@ -12,7 +12,7 @@ export const rootApi = createApi({
     }),
     endpoints: (builder) => ({
         getListOfAnime: builder.query({
-            query: (page = 1) => `anime?page=${page}`,
+            query: (page = 1) => `top/anime?page=${page}`,
         }),
         getAnimeById: builder.query({ query: (id) => `anime/${id}` }),
         getProducersById: builder.query({ query: (id) => `producers/${id}` }),
