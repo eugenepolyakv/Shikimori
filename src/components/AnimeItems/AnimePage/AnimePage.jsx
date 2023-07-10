@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './AnimePage.module.css';
 import AnimeInfo from './AnimeComponents/AnimeInfo';
 import AnimeRating from './AnimeComponents/AnimeRating';
@@ -6,6 +6,7 @@ import AnimeStudio from './AnimeComponents/AnimeStudio';
 import AnimeDescription from './AnimeComponents/AnimeDescription';
 import AnimeMainCharacters from './AnimeComponents/AnimeMainCharacters';
 import AnimeTrailer from './AnimeComponents/AnimeTrailer';
+import AnimeImage from './AnimeComponents/AnimeImage';
 import { useParams } from 'react-router-dom';
 import {
     useGetAnimeByIdQuery,
@@ -17,6 +18,7 @@ const AnimePage = () => {
     const params = useParams();
     useEffect(() => window.scrollTo(0, 0), []);
 
+    const [isPhotoZoomed, setZoomed] = useState(false);
     const { data, isFetching } = useGetAnimeByIdQuery(params.animeID);
     const { data: charactersData, isFetching: isCharatersFetching } =
         useGetCharactersByAnimeIdQuery(params.animeID);
@@ -44,18 +46,11 @@ const AnimePage = () => {
             <div className={styles.mainTitle}>{animeTitle}</div>
             <div className={styles.parent}>
                 <div className={styles.div1}>
-                    <div>
-                        <img
-                            style={{
-                                borderRadius: '5px',
-                                height: '425px',
-                                width: '280px',
-                                WebkitBoxShadow: '0 0 5px #000',
-                            }}
-                            // src="https://cdn.myanimelist.net/images/anime/13/17405l.jpg"
-                            src={data.data.images.jpg.large_image_url}
-                        />
-                    </div>
+                    <AnimeImage
+                        image={data.data.images.jpg.large_image_url}
+                        setZoomed={setZoomed}
+                        isZoomed={isPhotoZoomed}
+                    />
                     <AnimeInfo
                         info={{
                             type: parsedData.type,
@@ -82,7 +77,10 @@ const AnimePage = () => {
                 characters={charactersData}
                 isLoading={isCharatersFetching}
             />
-            <AnimeTrailer trailer={parsedData.trailer} />
+            <AnimeTrailer
+                isPhotoZoomed={isPhotoZoomed}
+                trailer={parsedData.trailer}
+            />
         </div>
     );
 };

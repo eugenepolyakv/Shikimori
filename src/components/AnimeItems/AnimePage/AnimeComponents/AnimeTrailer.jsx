@@ -3,31 +3,43 @@ import styles from '../AnimePage.module.css';
 // import closingCross from '../../../../assets/closingCross.svg';
 import smallPlayButton from '../../../../assets/smallPlayButton2.png';
 import playButton from '../../../../assets/playButton.png';
-const AnimeTrailer = ({ trailer }) => {
+const AnimeTrailer = ({ trailer, isPhotoZoomed }) => {
     const [openModal, setOpenModal] = useState(false);
     return (
         <div>
             <div style={{ display: 'inline-block', marginTop: '30px' }}>
                 <div className={styles.title}>TRAILER</div>
                 <div
-                    onClick={() => setOpenModal(true)}
-                    className={styles.smallVideoContainer}
+                    onClick={isPhotoZoomed ? null : () => setOpenModal(true)}
+                    className={
+                        isPhotoZoomed
+                            ? styles.smallVideoContainerWithPhotoZoomed
+                            : styles.smallVideoContainer
+                    }
                     style={{
                         // backgroundImage: `url(https://img.youtube.com/vi/bJVyIXeUznY/sddefault.jpg)`,
                         backgroundImage: `url(${trailer.images.maximum_image_url})`,
                     }}
                 >
-                    <div className={styles.overlay1}>
-                        <img src={playButton} />
-                    </div>
-                    <div className={styles.smallPlayButton}>
-                        <img
-                            // style={{ verticalAlign: 'middle' }}
-                            style={{ verticalAlign: 'middle', height: '15px' }}
-                            src={smallPlayButton}
-                        />{' '}
-                        Watch trailer
-                    </div>
+                    {isPhotoZoomed ? null : (
+                        <div className={styles.overlay1}>
+                            <img src={playButton} />
+                        </div>
+                    )}
+
+                    {isPhotoZoomed ? null : (
+                        <div className={styles.smallPlayButton}>
+                            <img
+                                // style={{ verticalAlign: 'middle' }}
+                                style={{
+                                    verticalAlign: 'middle',
+                                    height: '15px',
+                                }}
+                                src={smallPlayButton}
+                            />{' '}
+                            Watch trailer
+                        </div>
+                    )}
                 </div>
                 {openModal ? (
                     <div

@@ -32,10 +32,13 @@ const AnimeMainCharacters = ({ characters, isLoading }) => {
                 {/* <div style={{ display: 'flex', justifyContent: 'space-between' }}> */}
                 {/* {charactersArr} */}
                 {charactersArr.length > 0
-                    ? charactersArrOfFiveItems.map((arr) => (
-                          <div className={styles.mainCharacters}>
+                    ? charactersArrOfFiveItems.map((arr, ind) => (
+                          <div key={ind} className={styles.mainCharacters}>
                               {arr.map((el) => (
-                                  <div className={styles.characterCard}>
+                                  <div
+                                      key={el.character.mal_id}
+                                      className={styles.characterCard}
+                                  >
                                       <img
                                           src={
                                               el.character.images.jpg.image_url
