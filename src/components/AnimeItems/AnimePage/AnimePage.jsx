@@ -41,6 +41,7 @@ const AnimePage = () => {
                 margin: '0 auto',
                 width: '1300px',
                 padding: '20px 20px',
+                boxShadow: 'rgb(0, 0, 0) 0px 0px 5px',
             }}
         >
             <div className={styles.mainTitle}>{animeTitle}</div>
