@@ -9,7 +9,6 @@ const SearchBar = () => {
         return () => document.removeEventListener('click', handleClick);
     }, []);
     const handleClick = (e) => {
-        console.log(e.target);
         nodesChildren(e.target, ref.current)
             ? setClickBar(true)
             : setClickBar(false);

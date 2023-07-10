@@ -18,6 +18,8 @@ const AnimeItem = ({
                     ? null
                     : {
                           backgroundImage: `url(${images.jpg.large_image_url})`,
+                          backgroundSize: '100% 100%',
+                          backgroundRepeat: 'no-repeat',
                       }
             }
         >

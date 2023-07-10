@@ -19,6 +19,8 @@ const AnimeTrailer = ({ trailer, isPhotoZoomed }) => {
                     style={{
                         // backgroundImage: `url(https://img.youtube.com/vi/bJVyIXeUznY/sddefault.jpg)`,
                         backgroundImage: `url(${trailer.images.maximum_image_url})`,
+                        backgroundSize: '100% 100%',
+                        backgroundRepeat: 'no-repeat',
                     }}
                 >
                     {isPhotoZoomed ? null : (
