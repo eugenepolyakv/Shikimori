@@ -30,7 +30,9 @@ const AnimeItem = ({
                     <div className={`${c.items} ${c.head}`}>
                         {/* <p>Cowboy Bebop</p> */}
                         <p style={title.length > 18 ? { fontSize: 15 } : null}>
-                            {title}
+                            {title.length > 55
+                                ? title.split('', 55).join('') + '...'
+                                : title}
                         </p>
                     </div>
                     <div className={`${c.items} ${c.price}`}>

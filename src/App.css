@@ -1,6 +1,9 @@
 body {
     /* background: #ddd; */
-    background-image: url('./assets/square_bg.png');
+    /* background-image: url('./assets/square_bg.png'); */
+    background-image: linear-gradient(180deg, #2c2446, #1b1f24 30%);
+    background-repeat: no-repeat;
+
     /* background: #f4f4f4; */
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './SearchBar.module.css';
 import magnifyingGlass from '../../../assets/magnifyingGlass.svg';
 import list from '../../../assets/list.svg';
-const SearchBar = () => {
+const SearchBar = ({ animeTitle, setAnimeTitle }) => {
     const [isClickedOnBar, setClickBar] = useState(false);
     useEffect(() => {
         document.addEventListener('click', handleClick);
@@ -61,6 +61,8 @@ const SearchBar = () => {
                     {/* <i class="fas fa-search"></i> */}
                 </button>
                 <input
+                    value={animeTitle}
+                    onChange={(e) => setAnimeTitle(e.currentTarget.value)}
                     style={{ WebkitBoxShadow: '0 0 5px #000' }}
                     type="text"
                     className={styles.inputSearch}

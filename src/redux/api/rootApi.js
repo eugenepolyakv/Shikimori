@@ -15,6 +15,9 @@ export const rootApi = createApi({
             query: (page = 1) => `top/anime?page=${page}`,
         }),
         getAnimeById: builder.query({ query: (id) => `anime/${id}` }),
+        getSearchAnimeByItsName: builder.query({
+            query: (name) => `anime?q=${name}&order_by=popularity`,
+        }),
         getProducersById: builder.query({ query: (id) => `producers/${id}` }),
         getCharactersByAnimeId: builder.query({
             query: (id) => `anime/${id}/characters`,
@@ -24,6 +27,7 @@ export const rootApi = createApi({
 
 export const {
     useGetListOfAnimeQuery,
+    useGetSearchAnimeByItsNameQuery,
     useGetAnimeByIdQuery,
     useGetProducersByIdQuery,
     useGetCharactersByAnimeIdQuery,

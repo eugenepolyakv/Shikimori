@@ -4,7 +4,7 @@ const AnimeDescription = ({ synopsis }) => {
     return (
         <div className={styles.div4}>
             <div className={styles.title}>Description</div>
-            <div style={{ textAlign: 'justify' }}>
+            <div style={{ textAlign: 'justify', color: 'white' }}>
                 {synopsis}
                 {/* {`Moments prior to Naruto Uzumaki's birth, a huge demon known
                     as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure,

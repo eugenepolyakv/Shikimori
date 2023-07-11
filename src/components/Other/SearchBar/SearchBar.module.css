@@ -50,6 +50,22 @@
     pointer-events: painted;
 }
 
+.container:focus ~ .inputSearch {
+    width: 600px;
+    border-radius: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.75s cubic-bezier(0, 0.11, 0.35, 2);
+    border-radius: 25px;
+}
+
+.searchBox:focus ~ .inputSearch {
+    width: 600px;
+    border-radius: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.75s cubic-bezier(0, 0.11, 0.35, 2);
+    border-radius: 25px;
+}
+
 .btnSearch:focus ~ .inputSearch {
     width: 600px;
     border-radius: 0px;

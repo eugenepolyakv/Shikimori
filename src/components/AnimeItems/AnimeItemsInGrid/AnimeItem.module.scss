@@ -1,6 +1,6 @@
 .container {
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 450px;
     top: 0;
     right: 0;
     left: 0;
@@ -13,8 +13,8 @@
 }
 
 .animatedLoading {
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 450px;
 
     background: #eee;
     background: linear-gradient(110deg, #ececec 25%, #f5f5f5 25%, #ececec 45%);
@@ -45,7 +45,8 @@
     font-size: 20px;
     line-height: 40px;
     transform: translateY(40px);
-    transition: all 0.7s;
+    // transition: all 0.7s;
+    transition: all 0.4s;
     margin-bottom: 20px;
 }
 .price {
@@ -54,7 +55,8 @@
     font-weight: bold;
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.7s;
+    // transition: all 0.7s;
+    transition: all 0.4s;
 }
 .price .old {
     text-decoration: line-through;
@@ -67,7 +69,8 @@
     letter-spacing: 1px;
     font-family: 'Lato', sans-serif;
     transform: translateY(40px);
-    transition: all 0.7s;
+    // transition: all 0.7s;
+    transition: all 0.4s;
 }
 .cart i {
     font-size: 16px;
@@ -85,16 +88,19 @@
 }
 .container:hover .overlay hr {
     width: 75px;
-    transition-delay: 0.4s;
+    // transition-delay: 0.4s;
+    transition-delay: 0.2s;
 }
 .container:hover .overlay .price {
     transform: translateY(0px);
+    // transition-delay: 0.3s;
     transition-delay: 0.3s;
     opacity: 1;
 }
 .container:hover .overlay .cart {
     transform: translateY(0px);
-    transition-delay: 0.6s;
+    // transition-delay: 0.6s;
+    transition-delay: 0.5s;
     opacity: 1;
 }
 @keyframes shine {
