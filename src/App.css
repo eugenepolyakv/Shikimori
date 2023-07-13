@@ -3,15 +3,21 @@ body {
     /* background-image: url('./assets/square_bg.png'); */
     background-image: linear-gradient(180deg, #2c2446, #1b1f24 30%);
     background-repeat: no-repeat;
-    overflow: auto;
-    height: 100%;
+
+    /* margin: 0; */
+    /* display: flex; */
+    /* place-items: center; */
+    min-width: 320px;
+    min-height: 100vh;
+    /* overflow: auto;
+    height: 100%; */
 
     /* background: #f4f4f4; */
 }
-html {
+/* html {
     overflow: hidden;
     height: 100%;
-}
+} */
 /* #root {
   max-width: 1280px;
   margin: 0 auto;

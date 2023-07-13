@@ -9,13 +9,13 @@ import AnimePage from './components/AnimeItems/AnimePage/AnimePage';
 function App() {
     return (
         <>
+            <SideNavBar />
             <MainContent>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/anime/:animeID" element={<AnimePage />} />
                 </Routes>
             </MainContent>
-            <SideNavBar />
         </>
     );
 }

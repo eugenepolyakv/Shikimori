@@ -5,7 +5,6 @@ const NoResult = () => {
         <div
             style={{
                 margin: '0 auto',
-                // height: '300px',
                 width: '300px',
                 marginTop: 'auto',
             }}
