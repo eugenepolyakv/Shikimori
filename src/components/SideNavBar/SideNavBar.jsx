@@ -47,10 +47,16 @@ function SideNavBar(props) {
                     </a>
                 </li>
                 <li>
-                    <a href="#" className={`${styles.navItem} ${styles.guest}`}>
+                    <NavLink
+                        to="auth/"
+                        className={`${styles.navItem} ${styles.guest}`}
+                    >
                         <img src={guest}></img>
                         <span>Guest</span>
-                    </a>
+                    </NavLink>
+                    {/* <a href="#" className={`${styles.navItem} ${styles.guest}`}>
+                        
+                    </a> */}
                 </li>
             </ul>
         </nav>
