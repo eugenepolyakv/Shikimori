@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useGetUserTokenMutation } from '../../redux/api/authApi';
 import styles from './Auth.module.scss';
-import lock from '../../assets/lock.svg';
+import SignInForm from '../../formik/SignInForm';
+import SignUpForm from '../../formik/SignUpForm';
 const Auth = () => {
     const [isLoginShown, setLoginForm] = useState(true);
     // const [getToken, meta] = useGetUserTokenMutation();
@@ -21,19 +22,7 @@ const Auth = () => {
                         <h2 className={styles.formTitle} id="login">
                             {isLoginShown ? null : <span>or</span>}Sign in
                         </h2>
-                        <div className={styles.formHolder}>
-                            <input
-                                type="login"
-                                className={styles.input}
-                                placeholder="Login"
-                            />
-                            <input
-                                type="password"
-                                className={styles.input}
-                                placeholder="Password"
-                            />
-                        </div>
-                        <button className={styles.submitBtn}>Sign in</button>
+                        <SignInForm styles={styles} />
                     </div>
                 </div>
                 <div
@@ -48,19 +37,7 @@ const Auth = () => {
                         <h2 className={styles.formTitle} id="signup">
                             {isLoginShown ? <span>or</span> : null}Sign up
                         </h2>
-                        <div className={styles.formHolder}>
-                            <input
-                                type="login"
-                                className={styles.input}
-                                placeholder="Login"
-                            />
-                            <input
-                                type="password"
-                                className={styles.input}
-                                placeholder="Password"
-                            />
-                        </div>
-                        <button className={styles.submitBtn}>Sign up</button>
+                        <SignUpForm styles={styles} />
                     </div>
                 </div>
             </div>
