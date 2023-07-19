@@ -33,7 +33,13 @@ const SearchBar = ({ animeTitle, setAnimeTitle, inputValue }) => {
             style={{ margin: '20px auto' }}
             onClick={() => setClickBar(true)}
         >
-            <div className={styles.searchBox}>
+            <div
+                className={
+                    isClickedOnBar
+                        ? styles.searchBox
+                        : `${styles.searchBox} ${styles.bounce}`
+                }
+            >
                 <button
                     className={styles.btnSearch}
                     // onClick={() => setClickBar(true)}
@@ -66,7 +72,7 @@ const SearchBar = ({ animeTitle, setAnimeTitle, inputValue }) => {
                     onChange={(e) => setAnimeTitle(e.currentTarget.value)}
                     style={{ WebkitBoxShadow: '0 0 5px #000' }}
                     type="text"
-                    className={styles.inputSearch}
+                    className={`${styles.inputSearch} `}
                     // placeholder="Type to Search..."
                     placeholder="Looking for anything specific?"
                 />
