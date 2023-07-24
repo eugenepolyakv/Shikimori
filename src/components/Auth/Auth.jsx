@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetUserTokenMutation } from '../../redux/api/authApi';
+// import { useGetUserTokenMutation } from '../../redux/api/authApi';
 import styles from './Auth.module.scss';
 import SignInForm from '../../formik/SignInForm';
 import SignUpForm from '../../formik/SignUpForm';

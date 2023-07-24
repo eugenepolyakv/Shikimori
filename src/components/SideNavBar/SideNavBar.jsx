@@ -7,7 +7,9 @@ import styles from './SideNavBar.module.css';
 import guest from '../../assets/guest.png';
 import gitHub from '../../assets/gitHub.png';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 function SideNavBar(props) {
+    const username = useSelector((state) => state.authSlice.username);
     return (
         <nav>
             <ul>
@@ -52,7 +54,7 @@ function SideNavBar(props) {
                         className={`${styles.navItem} ${styles.guest}`}
                     >
                         <img src={guest}></img>
-                        <span>Guest</span>
+                        <span>{username || 'Guest'}</span>
                     </NavLink>
                     {/* <a href="#" className={`${styles.navItem} ${styles.guest}`}>
                         
