@@ -34,10 +34,10 @@ function SideNavBar(props) {
                     </NavLink>
                 </li>
                 <li>
-                    <a href="#" className={styles.navItem}>
+                    <NavLink to="clubs/" className={styles.navItem}>
                         <img src={community}></img>
                         <span>Clubs</span>
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
                     <a

@@ -5,21 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import { login, logOut } from '../redux/slices/authSlice';
 import { useGetUserTokenMutation } from '../redux/api/authApi';
 import { Formik, Field, Form } from 'formik';
+import loadingCircle from '../assets/loadingCircle.gif';
+import ErrorPopUp from '../components/Other/ErrorPopUp/ErrorPopUp';
 const SignInForm = ({ styles }) => {
-    // const [usernameLogin, setUserLogin] = useState('');
-    // const [pwd, setPwd] = useState('');
-    // const [errMsg, setErrMsg] = useState('');
     const navigate = useNavigate();
     const [loginApi, { isLoading }] = useGetUserTokenMutation();
     const dispatch = useDispatch();
-    // useEffect(() => {
-    //     setErrMsg('');
-    // }, [usernameLogin, pwd]);
 
     const handleSubmit = async (values, action) => {
         try {
             const userData = await loginApi(values).unwrap();
-            console.log(userData);
+            localStorage.setItem('token', userData.tokens.accessToken);
             dispatch(login({ username: userData.username }));
             navigate('/');
         } catch (err) {
@@ -49,12 +45,27 @@ const SignInForm = ({ styles }) => {
                         placeholder="Password"
                     />
                     <button className={styles.submitBtn} type="submit">
-                        Sign in
+                        {isLoading ? (
+                            <img
+                                style={{ height: '20px' }}
+                                src={loadingCircle}
+                            />
+                        ) : (
+                            'Sign In'
+                        )}
+                        {/* Sign in */}
                     </button>
                     {/* <button type="button" onClick={() => setErrMsg('wadawd')}>
                         GET ERROR
                     </button> */}
-                    {formikProps.errors.myError}
+                    <div style={{ height: '40px', overflow: 'visible' }}>
+                        {formikProps.errors.myError}
+                        {/* {formikProps.errors.myError ? (
+                            <ErrorPopUp
+                                errorMessage={formikProps.errors.myError}
+                            />
+                        ) : null} */}
+                    </div>
                 </Form>
             )}
         </Formik>

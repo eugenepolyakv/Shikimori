@@ -23,9 +23,17 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
 
-    // console.log('API ERRORS');
+    // console.log('result');
     // console.log(result);
-    // console.log(result);
+    // if (result?.error?.status === 403) {
+    //     console.log('lala');
+    // }
+    if (result?.error?.status === 403) {
+        const refreshResult = await baseQuery('/refresh', api, extraOptions);
+        console.log(refreshResult);
+        localStorage.setItem('token', refreshResult.data.tokens.accessToken);
+        result = await baseQuery(args, api, extraOptions);
+    }
     return result;
 
     // if (result?.error?.originalStatus === 403) {
@@ -53,7 +61,22 @@ export const authApi = createApi({
                 body,
             }),
         }),
+        getUsers: builder.query({ query: () => 'users' }),
+        getUserInfo: builder.query({
+            query: () => 'userInfo',
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                queryFulfilled
+                    .then((res) => {
+                        dispatch(login({ username: res.data.username }));
+                    })
+                    .catch((err) => console.log(err));
+            },
+        }),
     }),
 });
 
-export const { useGetUserTokenMutation } = authApi;
+export const {
+    useGetUserTokenMutation,
+    useGetUsersQuery,
+    useGetUserInfoQuery,
+} = authApi;
