@@ -31,8 +31,13 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     if (result?.error?.status === 403) {
         const refreshResult = await baseQuery('/refresh', api, extraOptions);
         console.log(refreshResult);
-        localStorage.setItem('token', refreshResult.data.tokens.accessToken);
-        result = await baseQuery(args, api, extraOptions);
+        if (!refreshResult.error) {
+            localStorage.setItem(
+                'token',
+                refreshResult.data.tokens.accessToken
+            );
+            result = await baseQuery(args, api, extraOptions);
+        }
     }
     return result;
 
