@@ -16,9 +16,14 @@ const SignInForm = ({ styles }) => {
         try {
             const userData = await loginApi(values).unwrap();
             localStorage.setItem('token', userData.tokens.accessToken);
-            dispatch(login({ username: userData.username }));
+            dispatch(
+                login({
+                    username: userData.username,
+                })
+            );
             navigate('/');
         } catch (err) {
+            console.log(err);
             action.setFieldError('myError', err.data.message);
         }
     };

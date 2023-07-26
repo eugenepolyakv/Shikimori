@@ -50,7 +50,7 @@ function SideNavBar(props) {
                 </li>
                 <li>
                     <NavLink
-                        to="auth/"
+                        to={username ? 'profile/' : 'auth/'}
                         className={`${styles.navItem} ${styles.guest}`}
                     >
                         <img src={guest}></img>

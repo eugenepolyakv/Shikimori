@@ -58,6 +58,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const authApi = createApi({
     reducerPath: 'authAPI',
     baseQuery: baseQueryWithReauth,
+    tagTypes: ['Auth'],
     endpoints: (builder) => ({
         getUserToken: builder.mutation({
             query: (body) => ({
@@ -66,16 +67,45 @@ export const authApi = createApi({
                 body,
             }),
         }),
-        getUsers: builder.query({ query: () => 'users' }),
-        getUserInfo: builder.query({
-            query: () => 'userInfo',
+        getUsers: builder.query({
+            query: () => 'users',
+            providesTags: ['Auth'],
+        }),
+        getUserInfo: builder.mutation({
+            query: () => ({ url: 'userInfo', method: 'POST' }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    const res = await queryFulfilled;
+                    console.log('startDispatchingLogin');
+                    dispatch(login({ username: res.data.username }));
+                    console.log('endDispatchingLogin');
+                } catch (e) {
+                    console.log('startDispatchingLogout');
+                    dispatch(logOut());
+                    console.log('endDispatchingLogout');
+                    console.log(e);
+                }
+
+                // queryFulfilled
+                //     .then((res) => {
+                //         console.log('startDispatching');
+                //         dispatch(login({ username: res.data.username }));
+                //         console.log('endDispatching');
+                //     })
+                //     .catch((err) => console.log(err));
+            },
+        }),
+        logout: builder.mutation({
+            query: () => ({ url: 'logout', method: 'POST' }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 queryFulfilled
-                    .then((res) => {
-                        dispatch(login({ username: res.data.username }));
+                    .then(() => {
+                        dispatch(logOut());
+                        localStorage.removeItem('token');
                     })
-                    .catch((err) => console.log(err));
+                    .catch((e) => console.log(e));
             },
+            invalidatesTags: ['Auth'],
         }),
     }),
 });
@@ -83,5 +113,6 @@ export const authApi = createApi({
 export const {
     useGetUserTokenMutation,
     useGetUsersQuery,
-    useGetUserInfoQuery,
+    useGetUserInfoMutation,
+    useLogoutMutation,
 } = authApi;

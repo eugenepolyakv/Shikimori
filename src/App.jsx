@@ -9,9 +9,16 @@ import Auth from './components/Auth/Auth';
 import ErrorPopUp from './components/Other/ErrorPopUp/ErrorPopUp';
 import Clubs from './components/Clubs/Clubs';
 
-import { useGetUserInfoQuery } from './redux/api/authApi';
+import { useGetUserInfoMutation } from './redux/api/authApi';
+import { useSelector } from 'react-redux';
+import Profile from './components/Profile/Profile';
 function App() {
-    const { isLoading } = useGetUserInfoQuery();
+    // const [isInitialReqSent, setInitialReqTrue] = useState(false);
+    const [getUserInfo, { isLoading }] = useGetUserInfoMutation();
+    const isAuthorized = useSelector((state) => state.authSlice.isAuthorized);
+    useEffect(() => {
+        getUserInfo();
+    }, []);
     // const token = localStorage.getItem('token');
     // useGetUserInfoQuery(isThereAToken ? skipToken : null);
     // useEffect(() => {
@@ -19,9 +26,9 @@ function App() {
     //         setToken(true);
     //     }
     // }, []);
-    return isLoading ? (
-        <div>Loading...</div>
-    ) : (
+    // console.log(isInitialReqSent);
+    // console.log(isLoading);
+    return isAuthorized !== null ? (
         <div>
             <SideNavBar />
             <MainContent>
@@ -30,10 +37,13 @@ function App() {
                     <Route path="/anime/:animeID" element={<AnimePage />} />
                     <Route path="/auth" element={<Auth />} />
                     <Route path="/clubs" element={<Clubs />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Routes>
             </MainContent>
             {/* <ErrorPopUp errorMessage={'dwadsssssssssssssssssss'} /> */}
         </div>
+    ) : (
+        <div>Loading...</div>
     );
 }
 
