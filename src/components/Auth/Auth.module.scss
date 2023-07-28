@@ -211,7 +211,7 @@
                     border-width: 1px;
                     border-style: solid;
 
-                    margin-bottom: 20px;
+                    // margin-bottom: 20px;
                     // border: 0;
                     outline: none;
                     box-shadow: none;
@@ -222,10 +222,20 @@
                     // border-bottom: 1px solid #eee;
                     width: 100%;
                     font-size: 20px;
-
+                    &.error {
+                        border-color: rgb(255, 65, 65);
+                        border-width: 1px;
+                        border-style: solid;
+                        background-color: #feb7b7;
+                        // background-color: rgb(179, 58, 58, 0.2);
+                    }
                     &::-webkit-input-placeholder {
                         color: rgba(0, 0, 0, 0.4);
                     }
+                }
+                .errorMessage {
+                    height: 18px;
+                    color: red;
                 }
             }
 

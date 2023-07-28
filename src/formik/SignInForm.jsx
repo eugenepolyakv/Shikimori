@@ -38,8 +38,6 @@ const SignInForm = ({ styles }) => {
             .required('Required'),
     });
     const customHandleChange = (e, formikAPI) => {
-        console.log('CHANGE');
-        console.log(e.target.id);
         formikAPI.setFieldError(e.target.id, undefined);
         formikAPI.handleChange(e);
     };

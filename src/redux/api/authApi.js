@@ -22,8 +22,6 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
-
-    // console.log('result');
     // console.log(result);
     // if (result?.error?.status === 403) {
     //     console.log('lala');
@@ -63,6 +61,13 @@ export const authApi = createApi({
         getUserToken: builder.mutation({
             query: (body) => ({
                 url: 'login',
+                method: 'POST',
+                body,
+            }),
+        }),
+        registration: builder.mutation({
+            query: (body) => ({
+                url: 'registration',
                 method: 'POST',
                 body,
             }),
@@ -112,6 +117,7 @@ export const authApi = createApi({
 
 export const {
     useGetUserTokenMutation,
+    useRegistrationMutation,
     useGetUsersQuery,
     useGetUserInfoMutation,
     useLogoutMutation,

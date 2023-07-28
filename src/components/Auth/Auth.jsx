@@ -37,7 +37,10 @@ const Auth = () => {
                         <h2 className={styles.formTitle} id="signup">
                             {isLoginShown ? <span>or</span> : null}Sign up
                         </h2>
-                        <SignUpForm styles={styles} />
+                        <SignUpForm
+                            styles={styles}
+                            setLoginForm={setLoginForm}
+                        />
                     </div>
                 </div>
             </div>
