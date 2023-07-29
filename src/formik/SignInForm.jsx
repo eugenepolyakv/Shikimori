@@ -6,26 +6,30 @@ import { login, logOut } from '../redux/slices/authSlice';
 import { useGetUserTokenMutation } from '../redux/api/authApi';
 import { Formik, Field, Form } from 'formik';
 import loadingCircle from '../assets/loadingCircle.gif';
-import ErrorPopUp from '../components/Other/ErrorPopUp/ErrorPopUp';
+// import ErrorPopUp from '../components/Other/ErrorPopUp/ErrorPopUp';
+import { notificationThunk } from '../redux/thunks/notificationThunk';
 import * as Yup from 'yup';
 const SignInForm = ({ styles }) => {
     const navigate = useNavigate();
     const [loginApi, { isLoading }] = useGetUserTokenMutation();
     const dispatch = useDispatch();
-    const handleSubmit = async (values, action) => {
-        try {
-            const userData = await loginApi(values).unwrap();
-            localStorage.setItem('token', userData.tokens.accessToken);
-            dispatch(
-                login({
-                    username: userData.username,
-                })
-            );
-            navigate('/');
-        } catch (err) {
-            console.log(err);
-            action.setFieldError('myError', err.data.message);
-        }
+    // const handleSubmit = async (values, action) => {
+    //     try {
+    //         const userData = await loginApi(values).unwrap();
+    //         localStorage.setItem('token', userData.tokens.accessToken);
+    //         dispatch(
+    //             login({
+    //                 username: userData.username,
+    //             })
+    //         );
+    //         navigate('/');
+    //     } catch (err) {
+    //         console.log(err);
+    //         action.setFieldError('myError', err.data.message);
+    //     }
+    // };
+    const handleSubmit = () => {
+        dispatch(notificationThunk({ message: 'SOME TEXT', type: 'ERROR' }));
     };
     const SignInValidationSchema = Yup.object().shape({
         username: Yup.string()

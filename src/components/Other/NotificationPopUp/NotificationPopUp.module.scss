@@ -1,0 +1,86 @@
+.container {
+    position: fixed;
+    top: 1%;
+    right: 1%;
+
+    // top: -50px;
+    // animation: 1s show ease;
+    // @keyframes show {
+    //     from {
+    //         top: -50px;
+    //     }
+    //     to {
+    //         top: 1%;
+    //     }
+    // }
+}
+
+.errorDiv {
+    // position: fixed;
+    // top: 1%;
+    // right: 1%;
+    right: 1%;
+    position: relative;
+    background-color: rgb(226, 27, 27, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    height: 40px;
+    width: 250px;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    margin: 10px 0;
+    animation: 6s show forwards;
+    cursor: pointer;
+    // animation: 1s show ease, 16s myAnimation forwards;
+    @keyframes show {
+        0% {
+            right: -500px;
+        }
+        16% {
+            right: 1%;
+        }
+        83% {
+            right: 1%;
+        }
+        100% {
+            right: -500px;
+        }
+    }
+    // @keyframes show {
+    //     from {
+    //         right: -500px;
+    //     }
+    //     to {
+    //         right: 1%;
+    //     }
+    // }
+
+    // @keyframes myAnimation {
+    //     0% {
+    //         opacity: 1;
+    //     }
+    //     80% {
+    //         opacity: 0.8;
+    //     }
+    //     100% {
+    //         display: none;
+    //         opacity: 0;
+    //     }
+    // }
+    &:hover {
+        background-color: rgb(226, 27, 27);
+    }
+}
+.transformDivToDissapear {
+    -webkit-animation: scale 1s ease forwards;
+    @keyframes scale {
+        100% {
+            transform: scaleY(0);
+        }
+    }
+    background-color: green;
+    height: 40px;
+    width: 250px;
+    // margin-bottom: 200px;
+}

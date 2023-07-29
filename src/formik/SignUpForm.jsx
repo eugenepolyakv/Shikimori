@@ -3,18 +3,26 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useRegistrationMutation } from '../redux/api/authApi';
 import loadingCircle from '../assets/loadingCircle.gif';
+import { notificationThunk } from '../redux/thunks/notificationThunk';
+import { useDispatch } from 'react-redux';
 const SignUpForm = ({ styles, setLoginForm }) => {
+    const dispatch = useDispatch();
     const [registrationApi, { isLoading }] = useRegistrationMutation();
-    const handleSubmit = async (values, action) => {
-        try {
-            await registrationApi({
-                username: values.signUpUsername,
-                password: values.signUpPassword,
-            }).unwrap();
-            setLoginForm(true);
-        } catch (e) {
-            console.log(e);
-        }
+    // const handleSubmit = async (values, action) => {
+    //     try {
+    //         await registrationApi({
+    //             username: values.signUpUsername,
+    //             password: values.signUpPassword,
+    //         }).unwrap();
+    //         setLoginForm(true);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // };
+    const handleSubmit = () => {
+        dispatch(
+            notificationThunk({ message: 'SUCCESS SOME TEXT', type: 'SUCCESS' })
+        );
     };
     const SignUpValidationSchema = Yup.object().shape({
         signUpUsername: Yup.string()

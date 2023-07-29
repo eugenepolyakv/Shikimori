@@ -6,7 +6,7 @@ import MainContent from './components/HOCs/MainContent';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AnimePage from './components/AnimeItems/AnimePage/AnimePage';
 import Auth from './components/Auth/Auth';
-import ErrorPopUp from './components/Other/ErrorPopUp/ErrorPopUp';
+import NotificationPopUp from './components/Other/NotificationPopUp/NotificationPopUp';
 import Clubs from './components/Clubs/Clubs';
 
 import { useGetUserInfoMutation } from './redux/api/authApi';
@@ -19,15 +19,6 @@ function App() {
     useEffect(() => {
         getUserInfo();
     }, []);
-    // const token = localStorage.getItem('token');
-    // useGetUserInfoQuery(isThereAToken ? skipToken : null);
-    // useEffect(() => {
-    //     if (token) {
-    //         setToken(true);
-    //     }
-    // }, []);
-    // console.log(isInitialReqSent);
-    // console.log(isLoading);
     return isAuthorized !== null ? (
         <div>
             <SideNavBar />
@@ -40,7 +31,7 @@ function App() {
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
             </MainContent>
-            {/* <ErrorPopUp errorMessage={'dwadsssssssssssssssssss'} /> */}
+            <NotificationPopUp />
         </div>
     ) : (
         <div>Loading...</div>
