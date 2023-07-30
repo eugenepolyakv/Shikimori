@@ -27,10 +27,12 @@ export const notificationThunk = createAsyncThunk(
                 thunkAPI.getState().notificationSlice.notifications
             );
             thunkAPI.dispatch(
-                actions.addNotification({ newID, message, type })
+                actions.slideInNotification({ newID, message, type })
             );
+            await new Promise((r) => setTimeout(() => r(), 1000));
+            thunkAPI.dispatch(actions.fixNotification({ newID }));
             await new Promise((r) => setTimeout(() => r(), 6000));
-            thunkAPI.dispatch(actions.prepareForRemove({ newID }));
+            thunkAPI.dispatch(actions.dissapearNotification({ newID }));
             await new Promise((r) => setTimeout(() => r(), 1000));
             return thunkAPI.dispatch(actions.removeNotification({ newID }));
         } catch (e) {

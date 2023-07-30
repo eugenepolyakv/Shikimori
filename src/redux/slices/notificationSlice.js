@@ -4,19 +4,17 @@ const notificationSlice = createSlice({
     name: 'notificationSlice',
     initialState: { notifications: {} },
     reducers: {
-        addNotification: (state, { payload }) => {
+        slideInNotification: (state, { payload }) => {
             state.notifications[payload.newID] = {
                 message: payload.message,
                 type: payload.type,
-                status: 'SHOWN',
+                status: 'APPEARS',
             };
-            // state.notifications.push({
-            // message: payload.message,
-            // type: payload.type,
-            // status: 'SHOWN',
-            // });
         },
-        prepareForRemove: (state, { payload }) => {
+        fixNotification: (state, { payload }) => {
+            state.notifications[payload.newID].status = 'SHOWN';
+        },
+        dissapearNotification: (state, { payload }) => {
             state.notifications[payload.newID].status = 'DISSAPEARS';
         },
         removeNotification: (state, { payload }) => {

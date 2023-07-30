@@ -21,34 +21,42 @@ function NotificationPopUp() {
         notifications.push(data[index]);
     }
     console.log(notifications);
+    let dissapearDivEncountered = false;
     return (
-        <div className={styles.container}>
-            <div className={styles.transformDivToDissapear}>dwad</div>
-            <div className={styles.errorDiv}>WEQ</div>
-        </div>
-        // <div className={notifications.length ? styles.container : null}>
-        //     {/* <div className={styles.transformDivToDissapear}>
-        //         DAWDAWDAWDWASSSSSSSSSSSS
-        //     </div> */}
-        //     {notifications.length
-        //         ? notifications.map((el) => {
-        //               if (el.status == 'SHOWN') {
-        //                   return (
-        //                       <div
-        //                           className={`${styles.errorDiv} ${styles.animationDissapear}`}
-        //                       >
-        //                           {el.message}
-        //                       </div>
-        //                   );
-        //               } else
-        //                   return (
-        //                       <div
-        //                           className={styles.transformDivToDissapear}
-        //                       ></div>
-        //                   );
-        //           })
-        //         : null}
+        // <div className={styles.container}>
+        //     <div className={`${styles.errorDiv} ${styles.slideIn}`}>dwad</div>
+        //     {/* <div className={`${styles.errorDiv}`}>WEQ</div> */}
         // </div>
+        <div className={notifications.length ? styles.container : null}>
+            {notifications.length
+                ? notifications.map((el) => {
+                      if (el.status != 'DISSAPEARS') {
+                          let customStyles =
+                              el.status == 'APPEARS'
+                                  ? `${styles.errorDiv} ${styles.slideIn}`
+                                  : `${styles.errorDiv} ${styles.slideOut}`;
+                          return (
+                              <div
+                                  className={
+                                      dissapearDivEncountered
+                                          ? `${customStyles} ${styles.transformDivToDissapear}`
+                                          : customStyles
+                                  }
+                              >
+                                  {el.message}
+                              </div>
+                          );
+                      } else {
+                          dissapearDivEncountered = true;
+                          return (
+                              <div
+                                  className={styles.transformDivToDissapear}
+                              ></div>
+                          );
+                      }
+                  })
+                : null}
+        </div>
     );
 
     // return <div className={styles.errorDiv}>{errorMessage}</div>;
