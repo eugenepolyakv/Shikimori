@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './NotificationPopUp.module.scss';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import cross from '../../../assets/cross.svg';
+import { notificationThunkManualClose } from '../../../redux/thunks/notificationThunk';
+import { useDispatch } from 'react-redux';
 function NotificationPopUp() {
     const data = useSelector((state) => state.notificationSlice.notifications);
+    const dispatch = useDispatch();
     // const isThereAData = Boolean(data.length);
     // useEffect(() => {}, [data]);
     // let notifications = (
@@ -24,11 +27,20 @@ function NotificationPopUp() {
     console.log(notifications);
     return (
         // <div className={styles.container}>
+        //     <div className={`${styles.transformDivToDissapear}`}></div>
         //     <div className={`${styles.errorDiv}`}>
-        //         some text
         //         <img className={styles.cross} src={cross} />
+        //         some text
         //     </div>
-        //     {/* <div className={`${styles.errorDiv}`}>WEQ</div> */}
+        //     <div className={`${styles.transformDivToDissapear}`}></div>
+        //     <div className={`${styles.errorDiv}`}>
+        //         <img className={styles.cross} src={cross} />
+        //         some text
+        //     </div>
+        //     <div className={`${styles.errorDiv}`}>
+        //         <img className={styles.cross} src={cross} />
+        //         some text
+        //     </div>
         // </div>
         <div className={notifications.length ? styles.container : null}>
             {notifications.length
@@ -36,22 +48,32 @@ function NotificationPopUp() {
                       if (el.status != 'DISSAPEARS') {
                           let customStyles = styles.errorDiv;
                           switch (el.status) {
-                              case 'APPEARS':
-                                  console.log('APPEARS');
+                              case 'SLIDE_IN':
                                   customStyles += ` ${styles.slideIn}`;
                                   break;
-                              case 'SHOWN':
-                                  console.log('SHOWN');
+                              //   case 'SHOWN':
+                              //       customStyles += ` ${styles.slideOut}`;
+                              //       break;
+                              case 'SLIDE_OUT':
                                   customStyles += ` ${styles.slideOut}`;
                                   break;
                               case 'REMOVED':
-                                  console.log('REMOVED');
                                   customStyles += ` ${styles.removed}`;
                                   break;
                           }
                           return (
                               <div key={el.index} className={customStyles}>
-                                  <img className={styles.cross} src={cross} />
+                                  <img
+                                      className={styles.cross}
+                                      src={cross}
+                                      onClick={() =>
+                                          dispatch(
+                                              notificationThunkManualClose({
+                                                  newID: el.index,
+                                              })
+                                          )
+                                      }
+                                  />
                                   {el.message}
                               </div>
                           );

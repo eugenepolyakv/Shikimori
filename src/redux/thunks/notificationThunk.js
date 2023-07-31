@@ -31,12 +31,29 @@ export const notificationThunk = createAsyncThunk(
             );
             await new Promise((r) => setTimeout(() => r(), 1000));
             thunkAPI.dispatch(actions.fixNotification({ newID }));
-            await new Promise((r) => setTimeout(() => r(), 6000));
+            await new Promise((r) => setTimeout(() => r(), 5000));
+            thunkAPI.dispatch(actions.slideOutNotification({ newID }));
+            await new Promise((r) => setTimeout(() => r(), 1000));
             thunkAPI.dispatch(actions.dissapearNotification({ newID }));
             await new Promise((r) => setTimeout(() => r(), 1000));
             return thunkAPI.dispatch(actions.removeNotification({ newID }));
         } catch (e) {
             console.log('ERROR THUNK');
+            console.log(e);
+        }
+    }
+);
+
+export const notificationThunkManualClose = createAsyncThunk(
+    'notificationSlice/notificationThunkManualClose',
+    async ({ newID }, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(actions.slideOutNotification({ newID }));
+            await new Promise((r) => setTimeout(() => r(), 1000));
+            thunkAPI.dispatch(actions.dissapearNotification({ newID }));
+            await new Promise((r) => setTimeout(() => r(), 1000));
+            return thunkAPI.dispatch(actions.removeNotification({ newID }));
+        } catch (e) {
             console.log(e);
         }
     }

@@ -8,25 +8,36 @@ const notificationSlice = createSlice({
             state.notifications[payload.newID] = {
                 message: payload.message,
                 type: payload.type,
-                status: 'APPEARS',
+                status: 'SLIDE_IN',
             };
         },
         fixNotification: (state, { payload }) => {
-            state.notifications[payload.newID].status = 'SHOWN';
+            if (state.notifications[payload.newID].status == 'SLIDE_IN') {
+                state.notifications[payload.newID].status = 'SHOWN';
+            }
+        },
+        slideOutNotification: (state, { payload }) => {
+            if (state.notifications[payload.newID].status == 'SHOWN') {
+                state.notifications[payload.newID].status = 'SLIDE_OUT';
+            }
         },
         dissapearNotification: (state, { payload }) => {
-            state.notifications[payload.newID].status = 'DISSAPEARS';
+            if (state.notifications[payload.newID].status == 'SLIDE_OUT') {
+                state.notifications[payload.newID].status = 'DISSAPEARS';
+            }
         },
         removeNotification: (state, { payload }) => {
-            const arr = [];
-            for (let el in state.notifications) {
-                arr.push(state.notifications[el]);
-            }
-            const arr2 = arr.filter((el) => el.status != 'REMOVED');
-            if (arr2.length === 1) {
-                state.notifications = {};
-            } else {
-                state.notifications[payload.newID].status = 'REMOVED';
+            if (state.notifications[payload.newID].status == 'DISSAPEARS') {
+                const arr = [];
+                for (let el in state.notifications) {
+                    arr.push(state.notifications[el]);
+                }
+                const arr2 = arr.filter((el) => el.status != 'REMOVED');
+                if (arr2.length === 1) {
+                    state.notifications = {};
+                } else {
+                    state.notifications[payload.newID].status = 'REMOVED';
+                }
             }
         },
     },

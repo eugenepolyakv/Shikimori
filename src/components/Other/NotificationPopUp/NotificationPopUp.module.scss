@@ -28,7 +28,8 @@
     width: 250px;
     text-align: center;
     padding: 10px 0 10px 0;
-    margin: 10px 0;
+    // margin: 10px 0;
+    margin-bottom: 10px;
     cursor: pointer;
     &.slideIn {
         animation: 1s slideIn forwards;
@@ -43,7 +44,7 @@
     }
     &.slideOut {
         animation: 1s slideOut forwards;
-        animation-delay: 5s;
+        // animation-delay: 5s;
         @keyframes slideOut {
             0% {
                 right: 1%;
@@ -54,11 +55,15 @@
         }
     }
     &.removed {
-        height: 0;
+        position: absolute;
+        height: -10px;
         width: 0;
         margin: 0;
         padding: 0;
     }
+    // &:first-child {
+    //     margin-top: 0;
+    // }
     .cross {
         position: absolute;
         top: 5%;
@@ -78,6 +83,31 @@
         background-color: rgb(226, 27, 27);
     }
 }
+
+// .slideIn {
+//     animation: 1s slideIn forwards;
+//     @keyframes slideIn {
+//         from {
+//             right: -120%;
+//         }
+//         to {
+//             right: 1%;
+//         }
+//     }
+// }
+// .slideOut {
+//     animation: 1s slideOut forwards;
+//     animation-delay: 5s;
+//     @keyframes slideOut {
+//         0% {
+//             right: 1%;
+//         }
+//         100% {
+//             right: -120%;
+//         }
+//     }
+// }
+
 .transformDivToDissapear {
     position: relative;
     animation: scale 500ms ease forwards;
@@ -86,8 +116,6 @@
             margin-bottom: -40px;
         }
     }
-    // background-color: green;
     height: 40px;
     width: 250px;
-    // margin-bottom: 200px;
 }
