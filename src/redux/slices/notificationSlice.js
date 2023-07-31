@@ -18,7 +18,16 @@ const notificationSlice = createSlice({
             state.notifications[payload.newID].status = 'DISSAPEARS';
         },
         removeNotification: (state, { payload }) => {
-            delete state.notifications[payload.newID];
+            const arr = [];
+            for (let el in state.notifications) {
+                arr.push(state.notifications[el]);
+            }
+            const arr2 = arr.filter((el) => el.status != 'REMOVED');
+            if (arr2.length === 1) {
+                state.notifications = {};
+            } else {
+                state.notifications[payload.newID].status = 'REMOVED';
+            }
         },
     },
     // extraReducers: (builder) => {

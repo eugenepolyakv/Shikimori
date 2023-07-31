@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './NotificationPopUp.module.scss';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import cross from '../../../assets/cross.svg';
 function NotificationPopUp() {
     const data = useSelector((state) => state.notificationSlice.notifications);
     // const isThereAData = Boolean(data.length);
@@ -18,38 +19,46 @@ function NotificationPopUp() {
     // );
     const notifications = [];
     for (let index in data) {
-        notifications.push(data[index]);
+        notifications.push({ index, ...data[index] });
     }
     console.log(notifications);
-    let dissapearDivEncountered = false;
     return (
         // <div className={styles.container}>
-        //     <div className={`${styles.errorDiv} ${styles.slideIn}`}>dwad</div>
+        //     <div className={`${styles.errorDiv}`}>
+        //         some text
+        //         <img className={styles.cross} src={cross} />
+        //     </div>
         //     {/* <div className={`${styles.errorDiv}`}>WEQ</div> */}
         // </div>
         <div className={notifications.length ? styles.container : null}>
             {notifications.length
                 ? notifications.map((el) => {
                       if (el.status != 'DISSAPEARS') {
-                          let customStyles =
-                              el.status == 'APPEARS'
-                                  ? `${styles.errorDiv} ${styles.slideIn}`
-                                  : `${styles.errorDiv} ${styles.slideOut}`;
+                          let customStyles = styles.errorDiv;
+                          switch (el.status) {
+                              case 'APPEARS':
+                                  console.log('APPEARS');
+                                  customStyles += ` ${styles.slideIn}`;
+                                  break;
+                              case 'SHOWN':
+                                  console.log('SHOWN');
+                                  customStyles += ` ${styles.slideOut}`;
+                                  break;
+                              case 'REMOVED':
+                                  console.log('REMOVED');
+                                  customStyles += ` ${styles.removed}`;
+                                  break;
+                          }
                           return (
-                              <div
-                                  className={
-                                      dissapearDivEncountered
-                                          ? `${customStyles} ${styles.transformDivToDissapear}`
-                                          : customStyles
-                                  }
-                              >
+                              <div key={el.index} className={customStyles}>
+                                  <img className={styles.cross} src={cross} />
                                   {el.message}
                               </div>
                           );
                       } else {
-                          dissapearDivEncountered = true;
                           return (
                               <div
+                                  key={el.index}
                                   className={styles.transformDivToDissapear}
                               ></div>
                           );
