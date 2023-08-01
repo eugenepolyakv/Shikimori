@@ -8,22 +8,35 @@ import { useDispatch } from 'react-redux';
 const SignUpForm = ({ styles, setLoginForm }) => {
     const dispatch = useDispatch();
     const [registrationApi, { isLoading }] = useRegistrationMutation();
-    // const handleSubmit = async (values, action) => {
-    //     try {
-    //         await registrationApi({
-    //             username: values.signUpUsername,
-    //             password: values.signUpPassword,
-    //         }).unwrap();
-    //         setLoginForm(true);
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // };
-    const handleSubmit = () => {
-        dispatch(
-            notificationThunk({ message: 'SUCCESS SOME TEXT', type: 'SUCCESS' })
-        );
+    const handleSubmit = async (values, action) => {
+        try {
+            await registrationApi({
+                username: values.signUpUsername,
+                password: values.signUpPassword,
+            }).unwrap();
+            setLoginForm(true);
+            dispatch(
+                notificationThunk({
+                    message:
+                        'Account registered successfully. You can sign in now',
+                    type: 'SUCCESS',
+                })
+            );
+        } catch (err) {
+            console.log(err);
+            dispatch(
+                notificationThunk({
+                    message: err.data.message,
+                    type: 'ERROR',
+                })
+            );
+        }
     };
+    // const handleSubmit = () => {
+    // dispatch(
+    //     notificationThunk({ message: 'SUCCESS SOME TEXT', type: 'WARNING' })
+    // );
+    // };
     const SignUpValidationSchema = Yup.object().shape({
         signUpUsername: Yup.string()
             .min(5, 'At least 5 symbols!')
@@ -81,7 +94,7 @@ const SignUpForm = ({ styles, setLoginForm }) => {
                     <button className={styles.submitBtn} type="submit">
                         {isLoading ? (
                             <img
-                                style={{ height: '20px' }}
+                                style={{ height: '10px' }}
                                 src={loadingCircle}
                             />
                         ) : (

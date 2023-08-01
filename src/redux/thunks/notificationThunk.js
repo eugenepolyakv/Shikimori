@@ -32,11 +32,12 @@ export const notificationThunk = createAsyncThunk(
             await new Promise((r) => setTimeout(() => r(), 1000));
             thunkAPI.dispatch(actions.fixNotification({ newID }));
             await new Promise((r) => setTimeout(() => r(), 5000));
-            thunkAPI.dispatch(actions.slideOutNotification({ newID }));
-            await new Promise((r) => setTimeout(() => r(), 1000));
-            thunkAPI.dispatch(actions.dissapearNotification({ newID }));
-            await new Promise((r) => setTimeout(() => r(), 1000));
-            return thunkAPI.dispatch(actions.removeNotification({ newID }));
+            thunkAPI.dispatch(notificationThunkManualClose({ newID }));
+            // thunkAPI.dispatch(actions.slideOutNotification({ newID }));
+            // await new Promise((r) => setTimeout(() => r(), 1000));
+            // thunkAPI.dispatch(actions.dissapearNotification({ newID }));
+            // await new Promise((r) => setTimeout(() => r(), 1000));
+            // return thunkAPI.dispatch(actions.removeNotification({ newID }));
         } catch (e) {
             console.log('ERROR THUNK');
             console.log(e);

@@ -13,24 +13,36 @@ const SignInForm = ({ styles }) => {
     const navigate = useNavigate();
     const [loginApi, { isLoading }] = useGetUserTokenMutation();
     const dispatch = useDispatch();
-    // const handleSubmit = async (values, action) => {
-    //     try {
-    //         const userData = await loginApi(values).unwrap();
-    //         localStorage.setItem('token', userData.tokens.accessToken);
-    //         dispatch(
-    //             login({
-    //                 username: userData.username,
-    //             })
-    //         );
-    //         navigate('/');
-    //     } catch (err) {
-    //         console.log(err);
-    //         action.setFieldError('myError', err.data.message);
-    //     }
-    // };
-    const handleSubmit = () => {
-        dispatch(notificationThunk({ message: 'SOME TEXT', type: 'ERROR' }));
+    const handleSubmit = async (values, action) => {
+        try {
+            const userData = await loginApi(values).unwrap();
+            localStorage.setItem('token', userData.tokens.accessToken);
+            dispatch(
+                login({
+                    username: userData.username,
+                })
+            );
+            dispatch(
+                notificationThunk({
+                    message: 'You have successfully signed in',
+                    type: 'SUCCESS',
+                })
+            );
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+            dispatch(
+                notificationThunk({
+                    message: err.data.message,
+                    type: 'ERROR',
+                })
+            );
+            // action.setFieldError('myError', err.data.message);
+        }
     };
+    // const handleSubmit = () => {
+    //     dispatch(notificationThunk({ message: 'SOME TEXT', type: 'ERROR' }));
+    // };
     const SignInValidationSchema = Yup.object().shape({
         username: Yup.string()
             .min(5, 'At least 5 symbols!')
@@ -92,27 +104,22 @@ const SignInForm = ({ styles }) => {
                     </div>
 
                     <button className={styles.submitBtn} type="submit">
+                        {/* <img style={{ height: '10px' }} src={loadingCircle} /> */}
                         {isLoading ? (
                             <img
-                                style={{ height: '20px' }}
+                                style={{ height: '10px' }}
                                 src={loadingCircle}
                             />
                         ) : (
                             'Sign In'
                         )}
-                        {/* Sign in */}
                     </button>
                     {/* <button type="button" onClick={() => setErrMsg('wadawd')}>
                         GET ERROR
                     </button> */}
-                    <div style={{ height: '40px', overflow: 'visible' }}>
+                    {/* <div style={{ height: '40px', overflow: 'visible' }}>
                         {formikProps.errors.myError}
-                        {/* {formikProps.errors.myError ? (
-                            <ErrorPopUp
-                                errorMessage={formikProps.errors.myError}
-                            />
-                        ) : null} */}
-                    </div>
+                    </div> */}
                 </Form>
             )}
         </Formik>

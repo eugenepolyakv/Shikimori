@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './NotificationPopUp.module.scss';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import cross from '../../../assets/cross.svg';
+import cross from '../../../assets/blackCross.svg';
 import { notificationThunkManualClose } from '../../../redux/thunks/notificationThunk';
 import { useDispatch } from 'react-redux';
 function NotificationPopUp() {
@@ -27,26 +27,27 @@ function NotificationPopUp() {
     console.log(notifications);
     return (
         // <div className={styles.container}>
-        //     <div className={`${styles.transformDivToDissapear}`}></div>
-        //     <div className={`${styles.errorDiv}`}>
+        //     <div className={`${styles.notificationDiv} ${styles.successDiv}`}>
         //         <img className={styles.cross} src={cross} />
-        //         some text
-        //     </div>
-        //     <div className={`${styles.transformDivToDissapear}`}></div>
-        //     <div className={`${styles.errorDiv}`}>
-        //         <img className={styles.cross} src={cross} />
-        //         some text
-        //     </div>
-        //     <div className={`${styles.errorDiv}`}>
-        //         <img className={styles.cross} src={cross} />
-        //         some text
+        //         You have successfully signed in
         //     </div>
         // </div>
         <div className={notifications.length ? styles.container : null}>
             {notifications.length
                 ? notifications.map((el) => {
                       if (el.status != 'DISSAPEARS') {
-                          let customStyles = styles.errorDiv;
+                          let customStyles = styles.notificationDiv;
+                          switch (el.type) {
+                              case 'ERROR':
+                                  customStyles += ` ${styles.errorDiv}`;
+                                  break;
+                              case 'SUCCESS':
+                                  customStyles += ` ${styles.successDiv}`;
+                                  break;
+                              case 'WARNING':
+                                  customStyles += ` ${styles.warningDiv}`;
+                                  break;
+                          }
                           switch (el.status) {
                               case 'SLIDE_IN':
                                   customStyles += ` ${styles.slideIn}`;
