@@ -20,6 +20,7 @@ const SignInForm = ({ styles }) => {
             dispatch(
                 login({
                     username: userData.username,
+                    regDate: userData.regDate,
                 })
             );
             dispatch(

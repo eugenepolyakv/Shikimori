@@ -14,6 +14,7 @@ import {
     useGetCharactersByAnimeIdQuery,
 } from '../../../redux/api/rootApi';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
+import AnimeAddButton from './AnimeComponents/AnimeAddButton';
 const AnimePage = () => {
     const params = useParams();
     useEffect(() => window.scrollTo(0, 0), []);
@@ -73,7 +74,11 @@ const AnimePage = () => {
                     />
                 </div>
             </div>
-            <AnimeDescription synopsis={parsedData.synopsis} />
+
+            <div style={{ display: 'flex' }}>
+                <AnimeAddButton />
+                <AnimeDescription synopsis={parsedData.synopsis} />
+            </div>
             <AnimeMainCharacters
                 characters={charactersData}
                 isLoading={isCharatersFetching}

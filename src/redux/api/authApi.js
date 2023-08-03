@@ -82,7 +82,12 @@ export const authApi = createApi({
                 try {
                     const res = await queryFulfilled;
                     console.log('startDispatchingLogin');
-                    dispatch(login({ username: res.data.username }));
+                    dispatch(
+                        login({
+                            username: res.data.username,
+                            regDate: res.data.registrationDate,
+                        })
+                    );
                     console.log('endDispatchingLogin');
                 } catch (e) {
                     console.log('startDispatchingLogout');
