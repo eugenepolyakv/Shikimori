@@ -15,6 +15,9 @@ const Profile = () => {
     // const [logout, { isLoading }] = useLogoutMutation();
     const navigate = useNavigate();
     useEffect(() => {
+        console.log(data.isAuthorized);
+        console.log(!data.isAuthorized);
+
         if (!data.isAuthorized) {
             navigate('/auth');
         }

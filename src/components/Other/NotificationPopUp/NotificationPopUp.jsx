@@ -75,7 +75,9 @@ function NotificationPopUp() {
                                           )
                                       }
                                   />
-                                  {el.message}
+                                  <div className={styles.text}>
+                                      {el.message}
+                                  </div>
                               </div>
                           );
                       } else {
